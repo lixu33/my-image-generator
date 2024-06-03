@@ -26,7 +26,7 @@ const tiers = [
       "较快的生成速度",
       "可下载 5 个 AI 图片",
     ],
-    featured: true,
+    featured: false,
   },
   {
     name: "畅享版",
@@ -57,6 +57,7 @@ function classNames(...classes: string[]) {
 export default function () {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [selectedTierId, setSelectedTierId] = useState<String | null>(null);
 
   const handleCheckout = async (
     plan: string,
@@ -136,20 +137,24 @@ export default function () {
       <h2 className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">
         选择一个付费方案，支付完成后可生成 AI 图片
       </h2>
-      <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
+      <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2 gap-4">
         {tiers.map((tier, tierIdx) => (
           <div
             key={tier.id}
             className={classNames(
-              tier.featured
+              selectedTierId === tier.id
                 ? "relative bg-white shadow-2xl"
                 : "bg-white/60 sm:mx-8 lg:mx-0",
-              tier.featured
+              selectedTierId === tier.id
                 ? ""
                 : tierIdx === 0
                   ? "rounded-t-3xl sm:rounded-b-none lg:rounded-tr-none lg:rounded-bl-3xl"
                   : "sm:rounded-t-none lg:rounded-tr-3xl lg:rounded-bl-none",
-              "rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10"
+              "rounded-3xl p-8 ring-1 ring-gray-900/10 sm:p-10",
+              selectedTierId === tier.id ? "bg-indigo-100" : "",
+              selectedTierId === tier.id ? "ring-2 ring-indigo-600" : "",
+              "hover:ring-2 hover:ring-indigo-600",
+              "active:bg-indigo-100",
             )}
           >
             <p
@@ -185,6 +190,7 @@ export default function () {
               className="mt-8 w-full"
               disabled={loading}
               onClick={() => {
+                setSelectedTierId(tier.id);
                 handleCheckout(
                   tier.plan,
                   tier.amount,
@@ -193,7 +199,7 @@ export default function () {
                 );
               }}
             >
-              {loading ? "处理中..." : "购买"}
+              {loading ? (selectedTierId === tier.id ? "处理中..." : "购买") : "购买"}
             </Button>
           </div>
         ))}

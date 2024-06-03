@@ -28,7 +28,7 @@ export default function () {
               </span>
             </a>
 
-            <div className="hidden md:flex ml-4">
+            <div className="flex ml-4">
               {navigations.map((tab: Nav, idx: number) => (
                 <a
                   className="text-md font-normal leading-6 text-gray-800 mx-4"

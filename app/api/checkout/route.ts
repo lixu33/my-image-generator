@@ -59,7 +59,7 @@ export async function POST(req: Request) {
           price_data: {
             currency: currency,
             product_data: {
-              name: "aiimage credits plan",
+              name: "imgen credits plan",
             },
             unit_amount: amount,
             recurring:
@@ -74,7 +74,7 @@ export async function POST(req: Request) {
       ],
       allow_promotion_codes: false,
       metadata: {
-        project: "aiimage",
+        project: "imgen",
         pay_scene: "buy-credits",
         order_no: order_no.toString(),
         user_email: user_email,
