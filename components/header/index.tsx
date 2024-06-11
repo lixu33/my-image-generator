@@ -23,7 +23,7 @@ export default function () {
                 className="w-8 h-8 rounded-full mr-2"
                 alt="logo"
               />
-              <span className="font-bold text-primary text-2xl">
+              <span className="font-bold text-primary text-xl">
                 Cyberpunk 图片
               </span>
             </a>

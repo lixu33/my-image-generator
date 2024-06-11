@@ -34,7 +34,11 @@ export async function POST(req: Request) {
     const img_size = "1024x1792";
 
     const llm_params: ImageGenerateParams = {
-      prompt: `Generate an image about ${description} in a cyberpunk style.`,
+      prompt: `Generate cyberpunk styled images based on ${description}. 
+      It avoids adult content and refrains from camera movement terms like 'slow motion', 'sequence', or 'timelapse' to suit static image creation. 
+      It autonomously enhances vague requests with creative details and references past prompts to personalize interactions. 
+      Always conclude dalle3 prompt with "shot on Fujifilm, Fujicolor C200, depth of field emphasized --ar 16:9 --style raw", tailored for commercial video aesthetics.
+      Use the following keyword where appropriate: “cyperpunk, digital art, pop art, neon, Cubist Futurism, the future, chiaroscuro.`,
       model: llm_name,
       n: 1,
       quality: "hd",
