@@ -20,11 +20,11 @@ const tiers = [
     credits: 5,
     description: "",
     features: [
-      "可生成 5 个 AI 图片",
+      "可生成 5 个 Cyberpunk 图片",
       "1 个月内有效",
       "高清的图片质量",
       "较快的生成速度",
-      "可下载 5 个 AI 图片",
+      "可下载 5 个 Cyberpunk 图片",
     ],
     featured: false,
   },
@@ -40,11 +40,11 @@ const tiers = [
     credits: 30,
     description: "",
     features: [
-      "可生成 30 个 AI 图片",
+      "可生成 30 个 Cyberpunk 图片",
       "1 个月内有效",
       "超清的图片质量",
       "更快的生成速度",
-      "不限制 AI 图片下载次数",
+      "不限制 Cyberpunk 图片下载次数",
     ],
     featured: false,
   },
@@ -135,7 +135,7 @@ export default function () {
         </h1>
       </div>
       <h2 className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600">
-        选择一个付费方案，支付完成后可生成 AI 图片
+        选择一个付费方案，支付完成后可生成 Cyberpunk 图片
       </h2>
       <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2 gap-4">
         {tiers.map((tier, tierIdx) => (

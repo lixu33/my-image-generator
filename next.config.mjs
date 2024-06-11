@@ -2,7 +2,7 @@
 const nextConfig = {
   images: {
     domains: [
-      "qiniu.lixu.dev",
+      "my-imges.s3.ap-east-1.amazonaws.com",
     ],
   },
 };

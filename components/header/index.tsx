@@ -24,7 +24,7 @@ export default function () {
                 alt="logo"
               />
               <span className="font-bold text-primary text-2xl">
-                AI 图片
+                Cyberpunk 图片
               </span>
             </a>
 

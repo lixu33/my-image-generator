@@ -10,10 +10,10 @@ import type { Metadata } from "next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "图片生成器 ｜ AI Image",
+  title: "Cyberpunk 图片生成器 ｜ Cyberpunk Image",
   description:
-    "图片生成器，利用 AI 技术生成高清精美的图片。",
-  keywords: "AI, 图片, AI 图片, AI Image",
+    "Cyberpunk 图片生成器，利用 AI 技术生成 Cyberpunk 风格的图片。",
+  keywords: "Cyberpunk, 图片, Cyberpunk 图片, Cyberpunk Image, AI",
 };
 
 export default function RootLayout({

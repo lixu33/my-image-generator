@@ -34,13 +34,13 @@ export async function POST(req: Request) {
     const img_size = "1024x1792";
 
     const llm_params: ImageGenerateParams = {
-      prompt: `Generate a image about ${description}`,
+      prompt: `Generate an image about ${description} in a cyberpunk style.`,
       model: llm_name,
       n: 1,
       quality: "hd",
       response_format: "url",
       size: img_size,
-      style: "vivid",
+      style: "natural",
     };
     const created_at = new Date().toISOString();
 
@@ -58,10 +58,6 @@ export async function POST(req: Request) {
     );
 
     let img_url = s3_img.Location;
-    const domain = process.env.AWS_DOMAIN;
-    if (domain) {
-      img_url = img_url.replace(process.env.AWS_ENDPOINT + '/' + process.env.AWS_BUCKET, domain);
-    }
 
     const image: Image = {
       user_email: user_email,

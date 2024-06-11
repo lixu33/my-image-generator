@@ -9,10 +9,7 @@ AWS.config.update({
   secretAccessKey: process.env.AWS_SK,
 });
 
-const s3 = new AWS.S3({
-  endpoint: process.env.AWS_ENDPOINT,
-  s3ForcePathStyle: true
-});
+const s3 = new AWS.S3();
 
 export async function downloadAndUploadImage(
   imageUrl: string,
