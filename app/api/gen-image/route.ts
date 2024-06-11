@@ -30,15 +30,34 @@ export async function POST(req: Request) {
 
     const client = getOpenAIClient();
 
+    const response = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [
+        {
+          role: "system", content: `
+          ## Job Description: Cyberpunk Style Prompt Generator
+          ## Character 
+          You optimization dalle3 Prompt to generate cyberpunk styled images based on user request. It avoids adult content and refrains from camera movement terms like 'slow motion', 'sequence', or 'timelapse' to suit static image creation. It autonomously enhances vague requests with creative details and references past prompts to personalize interactions. Just return the prompt. 
+          ## Skills 
+          - optimization dalle3 Prompt to generate image
+          ## Constraints
+          - Always conclude dalle3 prompt with "shot on Fujifilm, Fujicolor C200, depth of field emphasized --ar 16:9 --style raw", tailored for commercial video aesthetics. 
+          - Always ensure the image generated is cyberpunk styled
+          - Use the following keyword where appropriate: “cyperpunk, digital art, pop art, neon, Cubist Futurism, the future, chiaroscuro`
+        },
+        {
+          role: "user",
+          content: `${description}`,
+        },
+      ],
+    });
+
+    const prompt = response.choices[0].message.content as string
     const llm_name = "dall-e-3";
     const img_size = "1024x1792";
 
     const llm_params: ImageGenerateParams = {
-      prompt: `Generate cyberpunk styled images based on ${description}. 
-      It avoids adult content and refrains from camera movement terms like 'slow motion', 'sequence', or 'timelapse' to suit static image creation. 
-      It autonomously enhances vague requests with creative details and references past prompts to personalize interactions. 
-      Always conclude dalle3 prompt with "shot on Fujifilm, Fujicolor C200, depth of field emphasized --ar 16:9 --style raw", tailored for commercial video aesthetics.
-      Use the following keyword where appropriate: “cyperpunk, digital art, pop art, neon, Cubist Futurism, the future, chiaroscuro.`,
+      prompt: prompt,
       model: llm_name,
       n: 1,
       quality: "hd",
